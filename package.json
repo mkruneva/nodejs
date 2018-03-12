@@ -1,0 +1,15 @@
+{
+  "name": "colorize",
+  "version": "1.0.0",
+  "description": "working with node.js",
+  "main": "test.js",
+  "dependencies": {
+    "colors": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}

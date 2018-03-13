@@ -1,12 +1,18 @@
 'use strict';
 
-describe("initail test should be true", function() {
-    let a;
+const main = require('../main');
 
-    it("and so is a spec", () =>{
-        a = true;
+// console.log('changeColors.add js is', main.changeColors.add);
 
-        expect(a).toBe(true);
+describe("nodeArg function", function() {
+    let nodeArgumentFun;
+    let mockArray;
+
+    it("should return 3-rd argument of a given array", () => {
+        nodeArgumentFun = main.changeColors.nodeArg;
+        mockArray = [1, 2, 3];
+
+        expect(nodeArgumentFun(mockArray)).toBe(3);
     });
 });
 
@@ -17,7 +23,7 @@ describe("initail test should be true", function() {
 // secons element should be colors.green
 
 //fs.readfile should : 
-    // throw error if no file 
-    // read date from file if file presented 
-    // write data.toString
-    // change colors words 
+// throw error if no file 
+// read date from file if file presented 
+// write data.toString
+// change colors words

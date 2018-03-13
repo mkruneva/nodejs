@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="1" time="3">
+ <testsuite name="initail test should be true" timestamp="2018-03-13T10:48:18" hostname="localhost" time="0.003" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="initail test should be true" name="and so is a spec" time="0.002" />
+ </testsuite>
+</testsuites>

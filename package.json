@@ -6,7 +6,12 @@
   "dependencies": {
     "colors": "^1.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^3.0.0",
+    "jasmine-console-reporter": "^2.0.1",
+    "jasmine-reporters": "^2.3.0"
+  },
   "scripts": {
     "test": "test"
   },

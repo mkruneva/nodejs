@@ -10,7 +10,7 @@ const arrayColors = [
     colors.green,
     colors.blue,
     colors.yellow,
-    colors.magenta,
+    colors.magenta
 ]
 
 fs.readFile(nodeArg, "utf8", function(err, data) {

@@ -9,6 +9,7 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-jasmine": "^3.0.0",
+    "gulp-jasmine-node": "^1.0.7",
     "jasmine-console-reporter": "^2.0.1",
     "jasmine-reporters": "^2.3.0"
   },

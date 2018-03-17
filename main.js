@@ -1,7 +1,6 @@
 'use strict';
 (function() {
     const colors = require('colors');
-    const fs = require('fs');
 
     const arrayColors = [
         colors.red,
@@ -15,7 +14,7 @@
         filename: function(argArray) {
             return argArray[2]
         },
-        readfile: function(fileName, cb) { // give a file name reads the file and returns an array of all words
+        arrayFromFile: function(fs, fileName, cb) { // give a file name reads the file and returns an array of all words
             return fs.readFile(fileName, "utf8", function(err, data) {
                 if (err) throw err;
                 let str = data.toString();
@@ -23,16 +22,17 @@
                 cb(null, result);
             });
         },
-        paintwords: function(colors, arrayOfWords) { // give and array of words and colorisation functions it colorises the words and prints them on the screen
+        paintwords: function(write, colors, arrayOfWords) { // give and array of words and colorisation functions it colorises the words and prints them on the screen
             arrayOfWords.forEach((word, i) => {
-                process.stdout.write(colors[i % colors.length](word + ' '));
+                write(colors[i % colors.length](word + ' '));
             });
         },
         main: function() {
+            const fs = require('fs');
             const that = this;
             const fileName = that.filename(process.argv);
-            that.readfile(fileName, function(err, words) {
-                that.paintwords(arrayColors, words);
+            that.arrayFromFile(fs, fileName, function(err, words) {
+                that.paintwords(word => process.stdout.write(word), arrayColors, words);
             });
         },
     }

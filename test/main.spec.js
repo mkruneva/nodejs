@@ -13,6 +13,7 @@ describe("node Arguments file name function", function() {
 
         expect(filenameFunction(mockArray)).toBe(3);
     });
+
     it("should return undefined if array has less than 3 elements", () => {
         filenameFunction = main.changeColors.filename;
         mockArray = [1, 2];
@@ -25,10 +26,56 @@ describe("readfile function", function() {
     let readfileFunction;
 
     it("should be defined", function() {
-        readfileFunction = main.changeColors.readfile;
+        readfileFunction = main.changeColors.arrayFromFile;
 
         expect(readfileFunction).toBeDefined();
     })
+
+    it("should read the file and pass it's contents to the callback", function() {
+        var mockFs = { readFile: function() {} };
+
+        var spyFs = spyOn(mockFs, "readFile").andCallFake(function(fileName, enc, cb) {
+            cb(null, "ala bala nica")
+        });
+
+        main.changeColors.arrayFromFile(mockFs, "file1", function(err, data) {
+            expect(err).toBeNull();
+            expect(data).toEqual(["ala", "bala", "nica"]);
+        });
+
+        expect(spyFs).toHaveBeenCalledWith("file1", "utf8", jasmine.any(Function));
+    });
+});
+
+describe("paintwords function", function() {
+    it("should print every word with the coresponding colour", function() {
+        var mocks = {
+            red: function() {},
+            green: function() {},
+            blue: function() {},
+            write: function() {}
+        }
+        var red = spyOn(mocks, "red").andReturn("red");
+        var green = spyOn(mocks, "green").andReturn("green");
+        var blue = spyOn(mocks, "blue").andReturn("blue");
+        var colours = [mocks.red, mocks.green, mocks.blue];
+
+        var spyWrite = spyOn(mocks, "write").andCallFake(function(word) {});
+
+        main.changeColors.paintwords(mocks.write, colours, ["1", "2", "3", "4", "5", "6", "7"]);
+
+        expect(spyWrite).toHaveBeenCalledWith("red");
+        expect(spyWrite).toHaveBeenCalledWith("green")
+        expect(spyWrite).toHaveBeenCalledWith("blue")
+        expect(spyWrite).toHaveBeenCalledWith("red")
+        expect(spyWrite).toHaveBeenCalledWith("green")
+        expect(spyWrite).toHaveBeenCalledWith("blue")
+        expect(spyWrite).toHaveBeenCalledWith("red");
+
+        expect(red).toHaveBeenCalledWith("1 ")
+        expect(red).toHaveBeenCalledWith("4 ")
+        expect(red).toHaveBeenCalledWith("7 ")
+    });
 });
 
 describe("paintwords function", function() {

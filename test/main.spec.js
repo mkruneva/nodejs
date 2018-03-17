@@ -1,6 +1,7 @@
 'use strict';
 
 const main = require('../main');
+const mock = require('mock-fs');
 
 describe("node Arguments file name function", function() {
     let filenameFunction;
@@ -18,6 +19,39 @@ describe("node Arguments file name function", function() {
 
         expect(filenameFunction(mockArray)).toBeUndefined();
     });
+});
+
+describe("readfile function", function() {
+    let readfileFunction;
+
+    it("should be defined", function() {
+        readfileFunction = main.changeColors.readfile;
+
+        expect(readfileFunction).toBeDefined();
+    })
+});
+
+describe("paintwords function", function() {
+    let paintwordsFunction;
+    let writeFunction;
+    const colorF = () => { console.log('ok') };
+    const mockArrayColors = [colorF];
+    const mockArrayWords = ['first', 'second', 'third'];
+
+    it("should be defined", function() {
+        paintwordsFunction = main.changeColors.paintwords;
+        writeFunction = main.changeColors.write;
+
+        expect(paintwordsFunction).toBeDefined();
+    })
+
+    // it("should do something ...", function() {
+    //     paintwordsFunction = main.changeColors.paintwords;
+
+    //     paintwordsFunction(mockArrayColors, mockArrayWords);
+
+    //     expect(writeFunction).toHaveBeenCalled();
+    // })
 });
 
 describe("main function", function() {

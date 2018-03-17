@@ -35,17 +35,6 @@
                 that.paintwords(arrayColors, words);
             });
         },
-        // readFile: function() {
-
-        //     return fs.readFile(filename, "utf8", function(err, data) {
-        //         if (err) throw err;
-        //         let str = data.toString();
-        //         let result = str.split(" ");
-        // result.forEach((word, i) => {
-        //     process.stdout.write(arrayColors[i % arrayColors.length](word + ' '));
-        // });
-        //     });
-        // }
     }
 
     exports.changeColors.main();
